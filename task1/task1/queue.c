@@ -34,6 +34,6 @@ int Enqueue(Queue* queue, int front) {
     queue->head = element;
 }
 
-void Dequeue(Queue* queue) {
-
+int Dequeue(Queue* queue) {
+    Element* ptr = 
 }
