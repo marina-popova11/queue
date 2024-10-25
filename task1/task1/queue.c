@@ -4,36 +4,33 @@
 #include "queue.h"
 
 typedef struct Element {
-    int front;
-    struct Element* back;
+    int value;
+    struct Element* next;
 }Element;
 
 struct Queue {
-    Element *head, *tail;
+    Element *front, *back;
 };
 
-void createQueue(Queue* queue) {
-    queue->head = NULL;
-    queue->tail = NULL;
+Queue* createQueue() {
+    Queue* ptr = calloc(1, sizeof(Queue));
+    return ptr;
 }
 
-int Enqueue(Queue* queue, int front) {
-    /*if ((queue->tail == NULL) && (queue->head == NULL)) {
-        queue->tail = createQueue(front);
-        queue->head = queue->tail;
-    } else {
-        queue->tail = Enqueue(queue->tail, front);
-    }*/
+void Enqueue(Queue* queue, int value) {
     Element* element = malloc(sizeof(Element));
-    if (element == NULL) {
+    /*if (element == NULL) {
         return 1;
-    }
+    }*/
 
-    element->front = front;
-    element->back = queue->tail;
-    queue->head = element;
+    element->value = value;
+    element->next = NULL;
+    queue->back = element;
+    queue->back->next = element;
+
 }
 
-int Dequeue(Queue* queue) {
-    Element* ptr = 
-}
+//int Dequeue(Queue* queue) {
+//    Element* ptr = queue->front;
+//
+//}
