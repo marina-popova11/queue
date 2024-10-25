@@ -17,16 +17,23 @@ void createQueue(Queue* queue) {
     queue->tail = NULL;
 }
 
-void Enqueue(Queue* queue, int front) {
-    if ((queue->tail == NULL) && (queue->head == NULL)) {
-        queue
+int Enqueue(Queue* queue, int front) {
+    /*if ((queue->tail == NULL) && (queue->head == NULL)) {
+        queue->tail = createQueue(front);
+        queue->head = queue->tail;
+    } else {
+        queue->tail = Enqueue(queue->tail, front);
+    }*/
+    Element* element = malloc(sizeof(Element));
+    if (element == NULL) {
+        return 1;
     }
-    /*Element* element = malloc(sizeof(Element));
+
     element->front = front;
-    element->back = queue->head;
-    queue->head = element;*/
+    element->back = queue->tail;
+    queue->head = element;
 }
 
-void Dequeue(Queue* stack) {
+void Dequeue(Queue* queue) {
 
 }
