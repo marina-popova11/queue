@@ -4,21 +4,27 @@
 #include "queue.h"
 
 typedef struct Element {
-    int value;
-    struct Element* next;
+    int front;
+    struct Element* back;
 }Element;
 
 struct Queue {
-    Element* head;
+    Element *head, *tail;
 };
 
-Queue* createStack() {
-    Queue* ptr = calloc(1, sizeof(Queue));
-    return ptr;
+void createQueue(Queue* queue) {
+    queue->head = NULL;
+    queue->tail = NULL;
 }
 
-void Enqueue(Queue* stack, int value) {
-
+void Enqueue(Queue* queue, int front) {
+    if ((queue->tail == NULL) && (queue->head == NULL)) {
+        queue
+    }
+    /*Element* element = malloc(sizeof(Element));
+    element->front = front;
+    element->back = queue->head;
+    queue->head = element;*/
 }
 
 void Dequeue(Queue* stack) {

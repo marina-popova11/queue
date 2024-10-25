@@ -8,4 +8,4 @@ void Enqueue(Queue* stack, int value);
 
 void Dequeue(Queue* stack);
 
-Queue* createStack();
+void createQueue(Queue* queue);
