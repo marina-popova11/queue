@@ -3,34 +3,48 @@
 
 #include "queue.h"
 
-typedef struct Element {
+typedef struct QueueElement {
     int value;
-    struct Element* next;
-}Element;
+    struct QueueElement* next;
+} QueueElement;
 
-struct Queue {
-    Element *front, *back;
-};
+typedef struct Queue {
+    QueueElement* front;
+    QueueElement* back;
+} Queue;
 
 Queue* createQueue() {
-    Queue* ptr = calloc(1, sizeof(Queue));
-    return ptr;
+    Queue* queue = (Queue*)malloc(sizeof(Queue));
+    queue->front = NULL;
+    queue->back = NULL;
+    return queue;
 }
 
-void Enqueue(Queue* queue, int value) {
-    Element* element = malloc(sizeof(Element));
-    /*if (element == NULL) {
-        return 1;
-    }*/
-
+void enqueue(Queue* queue, int value) {
+    QueueElement* element = (QueueElement*)malloc(sizeof(QueueElement));
     element->value = value;
     element->next = NULL;
-    queue->back = element;
-    queue->back->next = element;
 
+    if (queue->back == NULL) {
+        queue->front = element;
+        queue->back = element;
+    }
+    else {
+        queue->back->next = element;
+        queue->back = element;
+    }
 }
 
-//int Dequeue(Queue* queue) {
-//    Element* ptr = queue->front;
-//
-//}
+int dequeue(Queue* queue) {
+    if (queue->front == NULL) {
+        return -1;
+    }
+    int value = queue->front->value;
+    QueueElement* tmp = queue->front;
+    queue->front = queue->front->next;
+    if (queue->front == NULL) {
+        queue->back = NULL;
+    }
+    free(tmp);
+    return value;
+}
