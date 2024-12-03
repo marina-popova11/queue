@@ -1,11 +1,9 @@
 #pragma once
 
-typedef struct Element Element;
-
 typedef struct Queue Queue;
 
-void Enqueue(Queue* stack, int value);
+void enqueue(Queue* queue, int value);
 
-//int Dequeue(Queue* stack);
+int dequeue(Queue* queue);
 
-Queue* createQueue();
+Queue* createQueue(void);

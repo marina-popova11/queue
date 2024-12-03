@@ -13,7 +13,7 @@ typedef struct Queue {
     QueueElement* back;
 } Queue;
 
-Queue* createQueue() {
+Queue* createQueue(void) {
     Queue* queue = (Queue*)malloc(sizeof(Queue));
     queue->front = NULL;
     queue->back = NULL;

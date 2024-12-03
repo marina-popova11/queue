@@ -5,6 +5,6 @@
 
 int main(void) {
     Queue* queue = createQueue();
-    Enqueue(queue, 1);
-    return 0;
+    enqueue(queue, 5);
+    printf("%d", dequeue(queue));
 }
